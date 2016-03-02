@@ -1,7 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+lax:
+  code: LAX 
+  # departing_flights: flights (:one)
+  # arriving_flights: 3
 
-one:
-  code: MyString
+ord: 
+  code: ORD 
+  # departing_flights: 
+  # arriving_flights: 1
 
-two:
-  code: MyString
+iad: 
+  code: IAD 
+  # departing_flights: 2
+  # arriving_flights: 4
+
+cmh: 
+  code: CMH 
+  # departing_flights: 4
+  # arriving_flights: 2
+
