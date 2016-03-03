@@ -1,0 +1,19 @@
+<%= form_tag('/flights', method: "get") do %>
+  <p>
+    <%= select_tag(:from_airport, options_for_select(@airport_options), prompt: "From:") %>
+  </p>
+
+  <p>
+    <%= select_tag(:to_airport, options_for_select(@airport_options), prompt: "To:") %>
+  </p>
+
+  <p>
+    <%= select_tag(:start_time, options_for_select(@date_options), prompt: "Date:") %>
+  </p>
+
+  <p>
+    <%= select_tag(:passengers,options_for_select(1..4), prompt: "Passengers") %>
+  </p>
+
+  <%= submit_tag "Search", name: nil %>
+<% end %>
