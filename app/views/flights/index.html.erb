@@ -1,19 +1,27 @@
-<%= form_tag('/flights', method: "get") do %>
+<%= form_tag '/flights', method: "get" do %>
+  
   <p>
-    <%= select_tag(:from_airport, options_for_select(@airport_options), prompt: "From:") %>
+    <%= select_tag :from_airport, options_for_select(@airport_options, params[:from_airport]), prompt: "From:" %>
   </p>
 
   <p>
-    <%= select_tag(:to_airport, options_for_select(@airport_options), prompt: "To:") %>
+    <%= select_tag :to_airport, options_for_select(@airport_options, params[:to_airport]), prompt: "To:" %>
   </p>
 
   <p>
-    <%= select_tag(:start_time, options_for_select(@date_options), prompt: "Date:") %>
+    <%= select_tag :start_time, options_for_select(@date_options, params[:start_time]), prompt: "Date:" %>
   </p>
 
   <p>
-    <%= select_tag(:passengers,options_for_select(1..4), prompt: "Passengers") %>
+    <%= select_tag :passengers,options_for_select((1..4), params[:passengers]), prompt: "Passengers"  %>
   </p>
 
   <%= submit_tag "Search", name: nil %>
+<% end %>
+
+<% if @flights.present? %>
+  <% @flights.each do |f| %>
+    <%= radio_button_tag :choice, :flight %>
+    <%= label :choice, "#{f.start_time}" %>
+  <% end %>
 <% end %>
