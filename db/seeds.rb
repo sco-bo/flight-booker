@@ -22,14 +22,14 @@ flight_duration = {
   "DEN_NYC" => 6.hours, "DEN_BWI" => 6.hours
 }
 
+
 Airport.all.each do |origin|
-  Airport.all.each do |destination|
-    next if origin == destination
-    duration = flight_duration["#{origin.code}_#{destination.code}"]
-    start = Time.now + rand(10000000)
-    Flight.create(from_airport_id: origin.id, to_airport_id: destination.id, start_time: start, duration: duration)
+  3.times do 
+    Airport.all.each do |destination|
+      next if origin == destination
+      duration = flight_duration["#{origin.code}_#{destination.code}"]
+      start = Time.now + rand(10000000)
+      Flight.create(from_airport_id: origin.id, to_airport_id: destination.id, start_time: start, duration: duration)
+    end
   end
 end
-
-
-
