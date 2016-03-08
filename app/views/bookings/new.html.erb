@@ -1,2 +1,30 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Flight details:</h1>
+  <fieldset>
+    <legend>Flight:</legend>
+    Id: <%= @flight.id %><br>
+    Date: <%= @flight.date_formatted %><br>
+    From: <%= @flight.from_airport.code %><br>
+    To: <%= @flight.to_airport.code %><br>
+  </fieldset>
+
+<%= form_for @booking do |b| %>
+  <% i = 1 %>
+  <% params[:passengers].to_i.times do  %>
+    <%= b.fields_for :passengers do |p| %>
+      <h3>Passenger <%= i %></h3>
+      <p>
+      <%= p.label :name %>
+      <%= p.text_field :name %>
+      </p>
+
+      <p>
+      <%= p.label :email %>
+      <%= p.email_field :email %>
+      </p>
+      <%= p.hidden_field :flight_id, value: params[:flight_id] %>
+      <% i += 1 %>
+    <% end %>
+  <% end %>
+  <%= hidden_field_tag :flight_id, params[:flight_id] %>
+  <%= b.submit %>
+<% end %>

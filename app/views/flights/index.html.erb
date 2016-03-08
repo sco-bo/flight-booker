@@ -20,10 +20,19 @@
   <%= submit_tag "Search", name: nil %>
 <% end %>
 
-<% if @flights.present? %>
-  <%= form_tag new_booking_path do  %>
-  <%= hidden_field(:passenger, :count, value: params[:passengers]) %>
-    <%#= form_for :booking, url: new_booking_path, method: :get do |booking| %>
-      <p><%= collection_radio_buttons(:booking, :flight_id, @flights, :id, :flight_description) %></p>
+
+  <%= form_tag new_booking_path, method: "get" do  %>
+    <% @flights.each do |f| %>
+      <tr>
+        <td><%= radio_button_tag :flight_id, f.id %></td>
+        <td><%= f.id %></td>
+        <td><%= f.from_airport.code %></td>
+        <td><%= f.to_airport.code %></td>
+      </tr>
+    <% end %>
+    <%= hidden_field_tag :passengers, params[:passengers] %>
+    <%= submit_tag "Select Flight", :name => nil, class: "button" %>
+     <!--  <p><%#= collection_radio_buttons(:booking, :flight_id, @flights, :id, :flight_description) %></p> -->
   <% end %>
-<% end %> 
+  <%#= button_to "Select This Flight", new_booking_path, class: "button", method: :get %>
+
