@@ -1,38 +1,35 @@
 <%= provide(:title, 'Flights') %>
-<%= form_tag '/flights', method: "get" do %>
-  
-  <p>
-    <%= select_tag :from_airport, options_for_select(@airport_options, params[:from_airport]), prompt: "From:" %>
-  </p>
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">Bobbitt Tours</h3>
 
-  <p>
-    <%= select_tag :to_airport, options_for_select(@airport_options, params[:to_airport]), prompt: "To:" %>
-  </p>
+          <ul class="nav masthead-nav">
+            <li class="active">
+              <%= link_to "Home", root_path %>
+            </li>
 
-  <p>
-    <%= select_tag :start_time, options_for_select(@date_options, params[:start_time]), prompt: "Date:" %>
-  </p>
+            <li>
+              <%= link_to "Log In", '#' %>
+            </li>
 
-  <p>
-    <%= select_tag :passengers,options_for_select((1..4), params[:passengers]), prompt: "Passengers"  %>
-  </p>
-
-  <%= submit_tag "Search", name: nil %>
-<% end %>
-
-
-  <%= form_tag new_booking_path, method: "get" do  %>
-    <% @flights.each do |f| %>
-      <tr>
-        <td><%= radio_button_tag :flight_id, f.id %></td>
-        <td><%= f.id %></td>
-        <td><%= f.from_airport.code %></td>
-        <td><%= f.to_airport.code %></td>
-      </tr>
-    <% end %>
-    <%= hidden_field_tag :passengers, params[:passengers] %>
-    <%= submit_tag "Select Flight", :name => nil, class: "button" %>
-     <!--  <p><%#= collection_radio_buttons(:booking, :flight_id, @flights, :id, :flight_description) %></p> -->
-  <% end %>
-  <%#= button_to "Select This Flight", new_booking_path, class: "button", method: :get %>
-
+            <li>
+              <%= link_to "Sign up", '#' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="inner cover">
+        <h1 class="cover-heading">Where would you like to go?</h1>
+          <%= render 'search' %>
+      </div>
+        <div class="row">
+          <% if @flights.present? %>
+            <%= render 'search_results' %>
+          <% end %>  
+        </div>
+    </div>
+  </div>
+</div>

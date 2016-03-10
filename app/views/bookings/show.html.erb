@@ -1,1 +1,51 @@
-<h1>Here's your booking</h1>
+<%= provide(:title, 'Your Booking') %>
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">Bobbitt Tours</h3>
+
+          <ul class="nav masthead-nav">
+            <li class="active">
+              <%= link_to "Home", root_path %>
+            </li>
+
+            <li>
+              <%= link_to "Log In", '#' %>
+            </li>
+
+            <li>
+              <%= link_to "Sign up", '#' %>
+            </li>
+            <li>
+              <%= link_to "New Flight", root_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="inner cover">
+        <h1>Enjoy your trip!</h1>
+          <h3>Booking info:</h3>
+          <fieldset>
+            <ul>
+              <li>Flight No: <%= @booking.flight.id %></li><br>
+              <li>From: <%= @booking.flight.from_airport.code %></li><br>
+              <li>To: <%= @booking.flight.to_airport.code %></li><br>
+              <li>Date: <%= @booking.flight.date_formatted %></li><br>
+              <li>Flight Duration: <%= distance_of_time_in_words(@booking.flight.duration) %></li><br>
+            </ul>
+            <h4><%= "Passenger".pluralize(@booking.passengers.count) %></h4>
+              <ol>
+                <% @booking.passengers.each do |p| %>
+                  <li>
+                    <%= p.name %>
+                    <%= p.email %>
+                    </li>
+                <% end %>
+              </ol> 
+          </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

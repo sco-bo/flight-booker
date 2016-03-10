@@ -1,0 +1,29 @@
+<%= form_tag new_booking_path, method: "get" do  %>
+  <h3>Results:</h3>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th width="50">Select</th>
+        <th width="100">Flight No.</th>
+        <th width="100">From</th>
+        <th width="100">To</th>
+        <th width="150">Date</th>
+        <th width="150">Flight Duration</th>
+      </tr>
+    </thead>
+  <% @flights.each do |f| %>
+    <tbody>
+      <tr>
+        <td><%= radio_button_tag :flight_id, f.id %></td>
+        <td><%= f.id %></td>
+        <td><%= f.from_airport.code %></td>
+        <td><%= f.to_airport.code %></td>
+        <td><%= f.date_formatted %></td>
+        <td><%= distance_of_time_in_words(f.duration) %></td>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
+  <%= hidden_field_tag :passengers, params[:passengers] %>
+  <%= submit_tag "Select This Flight", :name => nil, class: "button btn-lg btn-info" %>
+<% end %>
