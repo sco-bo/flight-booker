@@ -10,8 +10,8 @@
 
           <%= p.label :email %>
           <%= p.email_field :email %>
+          <%= p.hidden_field :flight_id, value: params[:flight_id] %>
         </div>
-      <%#= p.hidden_field :flight_id, value: params[:flight_id] %>
       <% i += 1 %>
     <% end %>
     <%= hidden_field_tag :flight_id, params[:flight_id] %>
