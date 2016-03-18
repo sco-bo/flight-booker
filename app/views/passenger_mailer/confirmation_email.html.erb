@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You are confirmed <%= @passenger.name %></h1>
+
+    <p>
+      You are successfully confirmed for your flight from <%= @passenger.flight.from_airport.code %> to <%= @passenger.flight.to_airport.code %> on <%= @passenger.flight.date_formatted %>. Flight No. <%= @passenger.flight.id %><br>
+    </p>
+
+    <p>We know you have other flight carriers, so thanks for choosing Bobbitt Tours</p>
+  </body>
+</html>
