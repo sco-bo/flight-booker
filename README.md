@@ -1,5 +1,5 @@
 #Flight-Booker
-This app is a flight booker in which users search for and choose a flight which fits their parameters. They then finish booking their spot on the flight by entering relevant passenger information. It uses ActionMailer to send confirmation emails to passengers confirmed for the particular flight. View on [Heroku](https://radiant-fortress-17197.herokuapp.com/)
+[View this app in action](https://radiant-fortress-17197.herokuapp.com/)! This app is a flight booker in which users search for and choose a flight which fits their parameters. They then finish booking their spot on the flight by entering relevant passenger information. It uses ActionMailer to send confirmation emails to passengers confirmed for the particular flight. 
 
 ##Flight Search
 Users can search for a flight from one airport to another, choose the date they wish and number of passengers. The app will then return search results based on the choices that best fit the user's search criteria, allowing the user to bubble in their flight choice
